@@ -43,6 +43,11 @@ const Directory: React.FC = () => {
         id: 5,
       },
     ]);
+
+    return () => {
+        console.log('destruct');
+        
+    };
   }, []);
 
   return (
@@ -55,3 +60,4 @@ const Directory: React.FC = () => {
 };
 
 export default Directory;
+
