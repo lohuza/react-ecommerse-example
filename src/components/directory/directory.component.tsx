@@ -3,6 +3,8 @@ import MenuItem from "../menu-item/menu-item.component";
 
 import "./directory.styles.scss";
 
+
+
 interface Section {
   id: number;
   title: string;
