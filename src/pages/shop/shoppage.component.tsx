@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PreviewCollection from "../preview-collection/preview-collection.component";
+import PreviewCollection from "../../components/preview-collection/preview-collection.component";
 
 import ITEMS, { Section } from "./shopData";
 // interface ComponentProps {
