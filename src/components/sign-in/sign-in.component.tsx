@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component.jsx";
 
+import { signInWithGoogle } from "../../firebase/firebase.utils";
+
 import "./sign-in.styles.scss";
 
 interface Credentials {
@@ -69,7 +71,10 @@ const SignIn: React.FC = () => {
           value={credentials.password}
           required
         />
-        <CustomButton submit={true}>Sign In</CustomButton>
+        <CustomButton btn={{type: 'submit'}}>Sign In</CustomButton>
+        <CustomButton btn={{type: 'button'}} onClick={signInWithGoogle}>
+          Sign In with Google
+        </CustomButton>
       </form>
     </div>
   );

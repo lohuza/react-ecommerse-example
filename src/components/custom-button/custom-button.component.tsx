@@ -3,11 +3,16 @@ import React from "react";
 import "./custom-button.styles.scss";
 
 interface CustomButtonProps {
-  submit?: boolean;
+  btn: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  onClick?: () => void;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ submit, children }) => (
-  <button className="custom-button" {...(submit ?? "type='submit'")}>
+const CustomButton: React.FC<CustomButtonProps> = ({
+  btn,
+  onClick,
+  children,
+}) => (
+  <button className="custom-button" type={btn.type} onClick={onClick}>
     {children}
   </button>
 );
