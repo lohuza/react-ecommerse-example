@@ -46,23 +46,7 @@ const SignIn: React.FC = () => {
           value={credentials.email}
           required
         />
-        {/* <input
-          name="email"
-          type="email"
-          value={credentials.email}
-          onChange={handleChange}
-          required
-        /> */}
-        {/* <label htmlFor="email">Email</label> */}
 
-        {/* <input
-          name="password"
-          type="password"
-          value={credentials.password}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="password">Password</label> */}
         <FormInput
           label="password"
           handleChange={handleChange}
@@ -71,10 +55,17 @@ const SignIn: React.FC = () => {
           value={credentials.password}
           required
         />
-        <CustomButton btn={{type: 'submit'}}>Sign In</CustomButton>
-        <CustomButton btn={{type: 'button'}} onClick={signInWithGoogle}>
-          Sign In with Google
-        </CustomButton>
+
+        <div className="buttons">
+          <CustomButton btn={{ type: "submit" }}>Sign In</CustomButton>
+          <CustomButton
+            btn={{ type: "button" }}
+            onClick={signInWithGoogle}
+            isGoogleSignIn
+          >
+            Sign In with Google
+          </CustomButton>
+        </div>
       </form>
     </div>
   );
