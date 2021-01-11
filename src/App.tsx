@@ -7,22 +7,24 @@ import Homepage from "./pages/home/homepage.component";
 import ShopPage from "./pages/shop/shoppage.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import firebase, {
-  auth,
-  createUserProfileDocument,
-} from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+
+interface User {
+  id?: string;
+  email?: string;
+  displayName?: string;
+  createdAt?: Date;
+}
 
 const App: React.FC = () => {
-  const [userState, setuserState] = useState({});
+  const [userState, setuserState] = useState<User>({});
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
-      // await user?.getIdTokenResult();
-      console.log(user);
-
-      await createUserProfileDocument(user);
-      const loggedInUser = { ...user };
-      setuserState({ ...loggedInUser });
+      const userRef = await createUserProfileDocument(user);
+      userRef?.onSnapshot((snapshot) => {
+        setuserState({ id: snapshot.id, ...snapshot.data() });
+      });
     });
 
     return () => {

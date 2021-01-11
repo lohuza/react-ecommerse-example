@@ -12,6 +12,12 @@ const config = {
     measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
+// interface User{
+//     email: string;
+//     displayName: string;
+//     createdAt:
+// }
+
 export const createUserProfileDocument = async (userAuth: any, additionalData = {}) => {
     if(!userAuth) return;
 
@@ -33,7 +39,7 @@ export const createUserProfileDocument = async (userAuth: any, additionalData = 
             console.log('error creating the user');
         }
     }
-
+    
     return userRef;
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input/form-input.component.jsx";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 import "./sign-in.styles.scss";
 
@@ -21,10 +21,17 @@ const SignIn: React.FC = () => {
     defaultCredentialState
   );
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setCredentials({ email: "", password: "" });
+    const { email, password } = credentials;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setCredentials(defaultCredentialState);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
